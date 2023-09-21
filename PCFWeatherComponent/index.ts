@@ -1,6 +1,20 @@
 import {IInputs, IOutputs} from "./generated/ManifestTypes";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import SingleWeatherComponent from './singleWeatherComponent';
+import WeatherForecast from './WeatherForecast';
+import {IWeatherData} from './weatherData';
+import {WeatherType} from './WeatherType';
 
 export class PCFWeatherComponent implements ComponentFramework.StandardControl<IInputs, IOutputs> {
+
+    private _notifyOutputChanged : () => void;
+    private _container : HTMLDivElement;
+    /*private _props : IWeatherData = {
+        date : null,
+        temperature: 20,   
+        weatherType: WeatherType.SUNNY
+    };*/
 
     /**
      * Empty constructor.
@@ -21,6 +35,10 @@ export class PCFWeatherComponent implements ComponentFramework.StandardControl<I
     public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
     {
         // Add control initialization code
+        this._notifyOutputChanged = notifyOutputChanged;
+        this._container = document.createElement("div");
+
+        container.appendChild(this._container);
     }
 
 
@@ -31,6 +49,11 @@ export class PCFWeatherComponent implements ComponentFramework.StandardControl<I
     public updateView(context: ComponentFramework.Context<IInputs>): void
     {
         // Add code to update control view
+
+        ReactDOM.render(
+            React.createElement(WeatherForecast),
+            this._container
+        );
     }
 
     /**
@@ -49,5 +72,10 @@ export class PCFWeatherComponent implements ComponentFramework.StandardControl<I
     public destroy(): void
     {
         // Add code to cleanup control if necessary
+    }
+
+    //This function is used as React callback method: React => PCF
+    private notifyChange(){
+        this._notifyOutputChanged();
     }
 }
