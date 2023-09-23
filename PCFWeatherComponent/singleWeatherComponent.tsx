@@ -1,13 +1,9 @@
 import * as React from 'react';
-import {WeatherData, IWeatherData} from './weatherData';
-import './App.css';
+import './css/App.css';
 import {IWeatherProps} from './IWeatherDataAPI';
 
 
 const SingleWeatherComponent = (props : IWeatherProps) : JSX.Element =>{
-
-    const data : WeatherData = new WeatherData();
-    const values : IWeatherData[]= data.generateWeatherData();
 
     return (
         <div className="singleItem">

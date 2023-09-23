@@ -1,0 +1,23 @@
+.stack{
+    color: #555;
+    border:1px solid #333;
+    width: 110px;
+}
+
+.day{
+    font-size: 18px;
+}
+.icon2{
+    font-size: 32px;
+}
+
+.temp{
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    padding: 5px 0px;
+}
+
+.desc{
+    font-size: 10px;
+}

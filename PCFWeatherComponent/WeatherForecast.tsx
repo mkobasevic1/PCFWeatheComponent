@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import './App.css';
+import './css/App.css';
 import SingleWeatherComponent from './singleWeatherComponent';
 import {IWeatherProps,IWeather,Idata,IFullData} from './IWeatherDataAPI';
+import VerticalStackConfigureExampleContent from './SingleFUIC';
 
 
 const WeatherForecast = () : JSX.Element =>{
@@ -102,6 +103,21 @@ const WeatherForecast = () : JSX.Element =>{
                     </div>
                     )
                 })}
+            </div>
+            <div className="weather2">
+                {
+                   data['data']?.map((element:Idata,index:number) => {
+                    const propdata : IWeatherProps = {
+                        day_name: getDayName(element.valid_date),
+                        valid_date: element.valid_date,
+                        icon_code: element.weather.icon,
+                        temperature: element.temp,    
+                        city_name: data.city_name,
+                        description: element.weather.description
+                    }
+                    return (<VerticalStackConfigureExampleContent {...propdata}/>);
+                    })
+                }                   
             </div>
         </div>
     );

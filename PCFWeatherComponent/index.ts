@@ -1,15 +1,30 @@
 import {IInputs, IOutputs} from "./generated/ManifestTypes";
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import SingleWeatherComponent from './singleWeatherComponent';
 import WeatherForecast from './WeatherForecast';
-import {IWeatherData} from './weatherData';
-import {WeatherType} from './WeatherType';
+import VerticalStackConfigureExampleContent from './SingleFUIC';
 
 export class PCFWeatherComponent implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
-    private _notifyOutputChanged : () => void;
     private _container : HTMLDivElement;
+    /*private props : IExampleOptions ={
+                    numItems: 5;
+                    showBoxShadow: false;
+                    preventOverflow: true;
+                    disableShrink: false;
+                    wrap: true;
+                    stackHeight: 20;
+                    autoHeight: true;
+                    childrenGap: 5;
+                    paddingLeft: 10;
+                    paddingRight: 10;
+                    paddingTop: 5;
+                    paddingBottom: 5;
+                    verticalAlignment: IStackProps['verticalAlign'];
+                    horizontalAlignment: IStackProps['horizontalAlign'];
+                    hideEmptyChildren: boolean;
+                    emptyChildren: string[];
+                    }*/
     /*private _props : IWeatherData = {
         date : null,
         temperature: 20,   
@@ -35,10 +50,9 @@ export class PCFWeatherComponent implements ComponentFramework.StandardControl<I
     public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
     {
         // Add control initialization code
-        this._notifyOutputChanged = notifyOutputChanged;
         this._container = document.createElement("div");
-
         container.appendChild(this._container);
+        ReactDOM.render(React.createElement(WeatherForecast),this._container);
     }
 
 
@@ -50,10 +64,10 @@ export class PCFWeatherComponent implements ComponentFramework.StandardControl<I
     {
         // Add code to update control view
 
-        ReactDOM.render(
+        /*ReactDOM.render(
             React.createElement(WeatherForecast),
             this._container
-        );
+        );*/
     }
 
     /**
@@ -73,9 +87,5 @@ export class PCFWeatherComponent implements ComponentFramework.StandardControl<I
     {
         // Add code to cleanup control if necessary
     }
-
-    //This function is used as React callback method: React => PCF
-    private notifyChange(){
-        this._notifyOutputChanged();
-    }
+   
 }
