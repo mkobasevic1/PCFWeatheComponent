@@ -1,6 +1,6 @@
 import * as React from 'react';
-import './css/App.css';
-import {IWeatherProps} from './IWeatherDataAPI';
+import './../css/App.css';
+import {IWeatherProps} from './../interface/IWeatherDataAPI';
 
 
 const SingleWeatherComponent = (props : IWeatherProps) : JSX.Element =>{

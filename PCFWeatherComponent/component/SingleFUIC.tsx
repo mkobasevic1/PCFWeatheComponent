@@ -1,14 +1,18 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { Stack, IStackStyles, IStackTokens, IStackItemStyles, IStackProps } from '@fluentui/react/lib/Stack';
-import './css/Fluent.css';
+import './../css/Fluent.css';
 import { Icon } from '@fluentui/react/lib/Icon';
-import {IWeatherProps} from './IWeatherDataAPI';
-import {WeatherTypeIcon} from './WeatherType';
+import {IWeatherProps} from './../interface/IWeatherDataAPI';
+import {WeatherTypeIcon} from './../enum/WeatherType';
 
 
-const VerticalStackConfigureExampleContent = (props:IWeatherProps) : React.JSX.Element => {
+const StackComponent = (props:IWeatherProps) : React.JSX.Element => {
 
+    /*
+        function for filtering numerous weather descriptions from API
+        to match icon names from FluentUI
+    */
     function getIconName(desc : string) :WeatherTypeIcon{
         if(props.description.includes("Thunderstorm")){
             return WeatherTypeIcon.THUNDERSTORMS;
@@ -65,4 +69,4 @@ const VerticalStackConfigureExampleContent = (props:IWeatherProps) : React.JSX.E
   )
 };
 
-export default VerticalStackConfigureExampleContent;
+export default StackComponent;

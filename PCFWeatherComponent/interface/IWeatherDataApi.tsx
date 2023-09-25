@@ -1,3 +1,4 @@
+//props needed for rendering single weather component
 export interface IWeatherProps {
     day_name: string,
     valid_date: string,
@@ -13,6 +14,7 @@ export interface IWeather{
     description:string
 }
 
+//data for one day forecast from Weatherbit API
 export interface Idata{  
     app_max_temp:number | null,
     app_min_temp:number | null,
@@ -54,6 +56,7 @@ export interface Idata{
     wind_spd:number | null,
 }
 
+//complete data for 5 day forecast from Weatherbit API
 export interface IFullData{
     country_code:string,
     city_name:string,

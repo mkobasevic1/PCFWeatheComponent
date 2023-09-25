@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import './css/App.css';
-import SingleWeatherComponent from './singleWeatherComponent';
-import {IWeatherProps,IWeather,Idata,IFullData} from './IWeatherDataAPI';
-import VerticalStackConfigureExampleContent from './SingleFUIC';
+import SingleWeatherComponent from './component/singleWeatherComponent';
+import {IWeatherProps,IWeather,Idata,IFullData} from './interface/IWeatherDataAPI';
+import StackComponent from './component/SingleFUIC';
 
 
 const WeatherForecast = () : JSX.Element =>{
@@ -65,6 +65,7 @@ const WeatherForecast = () : JSX.Element =>{
     useEffect(() => {
         async function fetchData() {
             try {
+                //Free API subscription allows only 50 API calls a day
                 const response = await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=Sarajevo&days=5&key=b36a1ad663914cbdaa66137b8519e803`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -88,7 +89,7 @@ const WeatherForecast = () : JSX.Element =>{
         <div className="body-div">
             <h1>Weather Forecast App</h1>
             <div className="weather">
-                {data['data']?.map((element:Idata,index:number) => {
+                {data.data.map((element:Idata,index:number) => {
                     const propdata : IWeatherProps = {
                         day_name: getDayName(element.valid_date),
                         valid_date: element.valid_date,
@@ -115,7 +116,7 @@ const WeatherForecast = () : JSX.Element =>{
                         city_name: data.city_name,
                         description: element.weather.description
                     }
-                    return (<VerticalStackConfigureExampleContent {...propdata}/>);
+                    return (<StackComponent {...propdata}/>);
                     })
                 }                   
             </div>

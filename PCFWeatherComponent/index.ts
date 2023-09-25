@@ -2,34 +2,11 @@ import {IInputs, IOutputs} from "./generated/ManifestTypes";
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import WeatherForecast from './WeatherForecast';
-import VerticalStackConfigureExampleContent from './SingleFUIC';
+import VerticalStackConfigureExampleContent from './component/SingleFUIC';
 
 export class PCFWeatherComponent implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
     private _container : HTMLDivElement;
-    /*private props : IExampleOptions ={
-                    numItems: 5;
-                    showBoxShadow: false;
-                    preventOverflow: true;
-                    disableShrink: false;
-                    wrap: true;
-                    stackHeight: 20;
-                    autoHeight: true;
-                    childrenGap: 5;
-                    paddingLeft: 10;
-                    paddingRight: 10;
-                    paddingTop: 5;
-                    paddingBottom: 5;
-                    verticalAlignment: IStackProps['verticalAlign'];
-                    horizontalAlignment: IStackProps['horizontalAlign'];
-                    hideEmptyChildren: boolean;
-                    emptyChildren: string[];
-                    }*/
-    /*private _props : IWeatherData = {
-        date : null,
-        temperature: 20,   
-        weatherType: WeatherType.SUNNY
-    };*/
 
     /**
      * Empty constructor.
@@ -63,11 +40,6 @@ export class PCFWeatherComponent implements ComponentFramework.StandardControl<I
     public updateView(context: ComponentFramework.Context<IInputs>): void
     {
         // Add code to update control view
-
-        /*ReactDOM.render(
-            React.createElement(WeatherForecast),
-            this._container
-        );*/
     }
 
     /**
